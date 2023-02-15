@@ -10,5 +10,4 @@ pmujeres = mujeres * 100.0 / total
 
 print(f"%Varones = { format(pvarones, '.2f')} %")
 print(f"%Mujeres = { format(pmujeres, '.2f')} %")
-
-print("")
+print()
