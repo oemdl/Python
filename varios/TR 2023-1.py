@@ -53,7 +53,7 @@ window.title("Ferreteria el Tornillo Feliz")
 window.resizable(0,0)
 #window.iconbitmap("logo.ico")
 
-frame = Frame(window, width=600, height=600 )
+frame = Frame(window, width=600, height=400 )
 frame.pack()
 
 Label(frame, text='Dni : ', anchor=W).place(x=30, y=30, width=80, height=25)
@@ -96,7 +96,7 @@ txtCantidad.bind("<Return>", txtCantidad_Enter)
 btnNuevo = Button(frame, text='Nuevo', command=btnNuevo_Click, cursor='hand2').place(x=500, y=180, width=80, height=25)
 
 tblDetalle = ttk.Treeview(frame, columns=('id','Descripcion','Unidad','Cantidad','Precio','SubTotal'))
-tblDetalle.place(x=20, y=220, width=550, height=300)
+tblDetalle.place(x=20, y=220, width=550, height=150)
 tblDetalle.column('#0', width=50)
 tblDetalle.column('#1', width=150)
 tblDetalle.column('#2', width=100)
@@ -111,8 +111,11 @@ tblDetalle.heading('#3', text='Cantidad')
 tblDetalle.heading('#4', text='Precio')
 tblDetalle.heading('#5', text='SubTotal')
 
-svTotal = StringVar()
-Label(frame, textvariable=svTotal, anchor=W).place(x=450, y=550, height=25)
+scroll = ttk.Scrollbar(frame, orient='vertical', command=tblDetalle.yview )
+scroll.place(x=570, y=220, width=15, height=150 )
+tblDetalle.configure( yscrollcommand=scroll.set )
 
+svTotal = StringVar()
+Label(frame, textvariable=svTotal, anchor=W).place(x=450, y=370, height=25)
 
 window.mainloop()
